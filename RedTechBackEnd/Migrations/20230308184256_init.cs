@@ -18,7 +18,7 @@ namespace RedTechBackEnd.Migrations
                     Id = table.Column<Guid>(type: "uniqueIdentifier", nullable: false),
                     OrderType = table.Column<string>(type: "varchar(50)", nullable: false),
                     CustomerName = table.Column<string>(type: "varchar(50)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2(7)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2(7)", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     CreatedByUsername = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>

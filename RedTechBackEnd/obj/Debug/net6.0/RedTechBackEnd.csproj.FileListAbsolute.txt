@@ -295,3 +295,5 @@ D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\runtimes\unix\lib\net6
 D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\AutoMapper.dll
+D:\Desktop\RedTechBackEnd\RedTechBackEnd\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

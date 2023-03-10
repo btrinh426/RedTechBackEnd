@@ -5,14 +5,16 @@ namespace RedTechBackEnd.Interfaces
 {
     public interface IOrderService
     {
-        public Task<ActionResult<IEnumerable<Order>>> GetOrders();
 
-        public Task<ActionResult<Order>> GetOrder(Guid id);
+        ICollection<Order> GetOrders();
 
-        public void PutOrder(Guid id, Order order);
+        Order GetOrder(Guid id);
+        bool OrderExists(Guid id);
 
-        public Task<int> PostOrder(Order order);
+        bool UpdateOrder(Order order);
 
-        public Task DeleteOrder(Guid id);
+        bool CreateOrder(Order order);
+
+        bool DeleteOrder(Order order);
     }
 }

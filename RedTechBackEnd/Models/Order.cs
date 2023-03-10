@@ -19,7 +19,7 @@ namespace RedTechBackEnd.Models
         [Column(TypeName = "varchar(50)")]
         public string CustomerName { get; set; }
 
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Column(TypeName = "datetime2(7)")]
         public DateTime CreatedDate { get; set; }
 

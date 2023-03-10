@@ -53,6 +53,7 @@ namespace RedTechBackEnd
             builder.Services.AddDbContext<RedTechDbContext>(options => 
             options.UseSqlServer(builder.Configuration.GetConnectionString("RedTechDatabase")));
 
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<IOrderService, OrderService>();
 
             var app = builder.Build();
