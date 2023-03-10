@@ -29,18 +29,17 @@ namespace RedTechBackEnd.Services
         {
             return _context.Orders.Any(o => o.Id == id);
         }
+        
+        public async Task<IEnumerable<Order>> Search(string id)
+        {
+            IQueryable<Order> query = _context.Orders;
 
-        //public async Task<ActionResult<Order>> GetOrder(Guid id)
-        //{
-        //    var order = await _context.Orders.FindAsync(id);
-
-        //    if (order == null)
-        //    {
-        //        throw new Exception("not found");
-        //    }
-
-        //    return order;
-        //}
+            if (!string.IsNullOrEmpty(id))
+            {
+                query = query.Where(o => o.Id.ToString() == id);
+            }
+            return await query.ToListAsync();
+        }
 
         public bool UpdateOrder(Order order)
         {

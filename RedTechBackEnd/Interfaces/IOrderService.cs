@@ -9,6 +9,7 @@ namespace RedTechBackEnd.Interfaces
         ICollection<Order> GetOrders();
 
         Order GetOrder(Guid id);
+
         bool OrderExists(Guid id);
 
         bool UpdateOrder(Order order);
@@ -16,5 +17,7 @@ namespace RedTechBackEnd.Interfaces
         bool CreateOrder(Order order);
 
         bool DeleteOrder(Order order);
+
+        Task<IEnumerable<Order>> Search(string id);
     }
 }

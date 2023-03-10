@@ -44,7 +44,7 @@ namespace RedTechBackEnd.Controllers
 
         }
 
-        // GET: api/Order/5
+        //GET: api/Order/5
         [AllowAnonymous]
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(Order))]
@@ -54,13 +54,14 @@ namespace RedTechBackEnd.Controllers
             if (!_service.OrderExists(id))
                 return NotFound();
 
-            var order = _mapper.Map<OrderDto>(_service.GetOrder(id));
+            var order = _mapper.Map<Order>(_service.GetOrder(id));
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             return Ok(order);
         }
+
 
         // PUT: api/Order/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -71,21 +72,21 @@ namespace RedTechBackEnd.Controllers
         [ProducesResponseType(404)]
         public IActionResult UpdateOrder(Guid id, [FromBody] OrderDto updatedOrder)
         {
-            if(updatedOrder == null)
+            if (updatedOrder == null)
                 return BadRequest(ModelState);
 
-            if(id != updatedOrder.Id)
+            if (id != updatedOrder.Id)
                 return BadRequest("Id does not match");
 
-            if(!_service.OrderExists(id))
+            if (!_service.OrderExists(id))
                 return NotFound();
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var orderMap = _mapper.Map<Order>(updatedOrder);
 
-            if(!_service.UpdateOrder(orderMap))
+            if (!_service.UpdateOrder(orderMap))
             {
                 ModelState.AddModelError("", "Something went wrong updating order");
                 return StatusCode(500, ModelState);
@@ -128,14 +129,14 @@ namespace RedTechBackEnd.Controllers
         public IActionResult DeleteOrder(Guid id)
         {
 
-            if(!_service.OrderExists(id))
+            if (!_service.OrderExists(id))
             {
                 return NotFound();
             }
 
             var orderToDelete = _service.GetOrder(id);
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             if (!_service.DeleteOrder(orderToDelete))
@@ -144,6 +145,26 @@ namespace RedTechBackEnd.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("(search)")]
+        public async Task<ActionResult<IEnumerable<Order>>> Search(string id)
+        {
+            try
+            {
+                var result = await _service.Search(id);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
         }
 
     }
