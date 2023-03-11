@@ -18,6 +18,8 @@ namespace RedTechBackEnd.Interfaces
 
         bool DeleteOrder(Order order);
 
+        //IEnumerable<Order> DeleteOrders(IEnumerable<Guid> deleteList);
+
         Task<IEnumerable<Order>> Search(string id);
     }
 }

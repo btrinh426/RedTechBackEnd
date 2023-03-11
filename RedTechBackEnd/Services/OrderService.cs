@@ -47,6 +47,21 @@ namespace RedTechBackEnd.Services
             return Save();
         }
 
+        //public IEnumerable<Order> DeleteOrders(IEnumerable<Guid> deleteList)
+        //{
+        //    try
+        //    {
+        //        var deleteListOfOrders = _context.Orders.Where(o => deleteList.Contains(o.Id)).ToList();
+        //        _context.Orders.RemoveRange(deleteListOfOrders);
+        //        _context.SaveChanges();
+        //        return deleteListOfOrders;
+        //    }
+        //    catch(DbUpdateException ex)
+        //    {
+        //        return null;
+        //    }
+        //}
+
         public bool DeleteOrder(Order order)
         {
             _context.Remove(order);
