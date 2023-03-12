@@ -147,50 +147,6 @@ namespace RedTechBackEnd.Controllers
             return NoContent();
         }
 
-        //[AllowAnonymous]
-        //[HttpDelete("{id}")]
-        //[ProducesResponseType(400)]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(404)]
-        //public IActionResult DeleteOrders(IEnumerable<Guid> listIds)
-        //{
-        //    var delList = _service.DeleteOrders(listIds);
-        //    if(delList == null)
-        //    {
-        //        return BadRequest(404);
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //// DELETE: multiple Ids
-        //[AllowAnonymous]
-        //[HttpDelete("{id}")]
-        //[ProducesResponseType(400)]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(404)]
-        //public IActionResult DeleteOrders(List<Guid> ids)
-        //{
-        //    List<Guid> orderIds = new List<Guid>();
-            
-        //    foreach (var id in ids)
-        //    {
-        //        orderIds.Add(id);
-        //    }
-
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    if (!_service.DeleteOrder(orderToDelete))
-        //    {
-        //        ModelState.AddModelError("", "Something went wrong deleting order");
-        //    }
-
-        //    return NoContent();
-        //}
-
-
-
         [HttpGet("(search)")]
         public async Task<ActionResult<IEnumerable<Order>>> Search(string id)
         {
